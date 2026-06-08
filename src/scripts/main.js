@@ -37,7 +37,6 @@ function toggleMenu() {
   }
 }
 
-/* Делаем функции доступными для onclick в index.html */
 window.toggleTheme = toggleTheme;
 window.setLang = setLang;
 window.toggleMenu = toggleMenu;
@@ -45,10 +44,7 @@ window.toggleMenu = toggleMenu;
 document.addEventListener('DOMContentLoaded', () => {
   const themeBtn = document.getElementById('themeBtn');
 
-  if (
-    window.matchMedia &&
-    window.matchMedia('(prefers-color-scheme: dark)').matches
-  ) {
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     document.documentElement.setAttribute('data-theme', 'dark');
 
     if (themeBtn) {
@@ -106,9 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function tick(now) {
       const progressValue = Math.min((now - start) / 1300, 1);
-      const value = Math.round(
-        (1 - Math.pow(1 - progressValue, 3)) * target
-      );
+      const value = Math.round((1 - Math.pow(1 - progressValue, 3)) * target);
 
       el.textContent = value + suffix;
 
@@ -149,7 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* Terminal */
   const term = document.getElementById('termBody');
 
   if (term) {
@@ -160,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
       { t: 'br' },
       { t: 'ok', txt: '● Минимализм · анимации · внимание к деталям' },
       { t: 'br' },
-      { t: 'out', txt: 'Сайты · Telegram Mini Apps · Мобильные приложения' },
+      { t: 'out', txt: 'Сайты · Telegram Mini Apps · Мобильные приложения · AI-системы' },
       { t: 'br' },
       { t: 'br' },
       {
@@ -176,11 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
       span.textContent = text;
       term.appendChild(span);
 
-      if (
-        className !== 'prompt' &&
-        className !== 'path' &&
-        className !== 'cmd'
-      ) {
+      if (className !== 'prompt' && className !== 'path' && className !== 'cmd') {
         term.appendChild(document.createElement('br'));
       }
 
@@ -189,16 +178,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const cmds = {
       help() {
-        return ['out', 'Доступно: услуги · контакты · whoami · clear'];
+        return ['out', 'Доступно: услуги · контакты · whoami · ai · clear'];
       },
       услуги() {
         return [
           'ok',
-          '🌐 Сайты · ✈️ Telegram Mini Apps · 📱 Приложения · ⚙️ Веб-сервисы',
+          '🌐 Сайты · ✈️ Telegram Mini Apps · 📱 Приложения · 🤖 AI-системы · ⚙️ Веб-сервисы',
         ];
       },
       services() {
         return this.услуги();
+      },
+      ai() {
+        return ['ok', 'AI-агенты, Telegram-боты, автоматизация заявок, контента и продаж.'];
       },
       контакты() {
         return [
@@ -268,10 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
               appendLine(result[0], result[1]);
             }
           } else {
-            appendLine(
-              'err',
-              `command not found: ${value}  →  напишите help`
-            );
+            appendLine('err', `command not found: ${value}  →  напишите help`);
           }
         }
 
@@ -355,7 +344,6 @@ document.addEventListener('DOMContentLoaded', () => {
     terminalObserver.observe(term);
   }
 
-  /* Rotating headline word */
   const rotator = document.getElementById('rotator');
 
   if (rotator) {
@@ -381,13 +369,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 2600);
   }
 
-  /* Seamless marquee */
   const marqueeTrack = document.getElementById('mtrack');
   if (marqueeTrack) {
     marqueeTrack.innerHTML += marqueeTrack.innerHTML;
   }
 
-  /* Modern interactions desktop */
   if (window.matchMedia('(min-width: 761px)').matches) {
     document.querySelectorAll('.btn-primary').forEach((button) => {
       button.addEventListener('mousemove', (event) => {
@@ -395,9 +381,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const x = event.clientX - rect.left - rect.width / 2;
         const y = event.clientY - rect.top - rect.height / 2;
 
-        button.style.transform = `translate(${x * 0.28}px, ${
-          y * 0.4
-        }px) scale(1.04)`;
+        button.style.transform = `translate(${x * 0.28}px, ${y * 0.4}px) scale(1.04)`;
       });
 
       button.addEventListener('mouseleave', () => {
@@ -411,9 +395,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const x = (event.clientX - rect.left) / rect.width - 0.5;
         const y = (event.clientY - rect.top) / rect.height - 0.5;
 
-        card.style.transform = `perspective(900px) rotateY(${
-          x * 6
-        }deg) rotateX(${-y * 6}deg)`;
+        card.style.transform = `perspective(900px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg)`;
       });
 
       card.addEventListener('mouseleave', () => {
@@ -423,12 +405,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-/* Rotating headline words */
 const wordsRU = [
   'цифровые продукты',
   'сайты',
   'Telegram Mini Apps',
-  'приложения',
+  'AI-системы',
   'веб-сервисы',
 ];
 
@@ -436,7 +417,7 @@ const wordsEN = [
   'digital products',
   'websites',
   'Telegram Mini Apps',
-  'mobile apps',
+  'AI systems',
   'web services',
 ];
 
