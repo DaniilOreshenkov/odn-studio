@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ODN — Создание сайтов, Telegram Mini Apps, мобильных приложений</title>
+<link rel="stylesheet" href="/src/styles/main.css">
+</head>
+<body>
+
+<div id="loader">
+  <svg class="loader-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="lgL" x1="2" y1="2" x2="30" y2="30"><stop stop-color="#0071e3"/><stop offset="1" stop-color="#9b51e0"/></linearGradient></defs>
+    <circle cx="16" cy="16" r="11" stroke="url(#lgL)" stroke-width="2.6" fill="none"/>
+    <g class="orbit-node"><circle cx="27" cy="16" r="3.4" fill="url(#lgL)"/></g>
+    <circle cx="16" cy="16" r="2.4" fill="url(#lgL)"/>
+  </svg>
+</div>
+
+<div id="progress"></div>
+<div id="spotlight"></div>
+<div class="orbs"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div></div>
+
+<header id="header">
+  <div class="wrap nav">
+    <div class="logo" onclick="document.querySelector('#termInput')&&document.querySelector('#termInput').focus()">
+      <svg class="odn-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="lg1" x1="2" y1="2" x2="30" y2="30"><stop stop-color="#0071e3"/><stop offset="1" stop-color="#9b51e0"/></linearGradient></defs>
+        <circle cx="16" cy="16" r="11" stroke="url(#lg1)" stroke-width="2.6" fill="none"/>
+        <g class="orbit-node"><circle cx="27" cy="16" r="3.4" fill="url(#lg1)"/></g>
+        <circle cx="16" cy="16" r="2.4" fill="url(#lg1)"/>
+      </svg>
+      <span class="name">ODN</span>
+    </div>
+    <nav class="nav-links" id="navLinks">
+      <a href="#services" data-ru="Услуги" data-en="Services">Услуги</a>
+      <a href="#process" data-ru="Как работаем" data-en="Process">Как работаем</a>
+      <a href="#portfolio" data-ru="Работы" data-en="Work">Работы</a>
+      <a href="#contact" data-ru="Контакты" data-en="Contact">Контакты</a>
+    </nav>
+    <div class="ctrls">
+      <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" title="Сменить тему">🌙</button>
+      <div class="lang-toggle">
+        <button id="ruBtn" class="active" onclick="setLang('ru')">RU</button>
+        <button id="enBtn" onclick="setLang('en')">EN</button>
+      </div>
+      <button class="burger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="badge reveal"><span class="live"></span><span data-ru="Открыт для новых проектов" data-en="Available for new projects">Открыт для новых проектов</span></div>
+    <h1 class="reveal d1"><span data-ru="Создаём" data-en="We build">Создаём</span><br><span class="rotator-wrap"><span class="grad rotator" id="rotator">цифровые продукты</span></span></h1>
+    <p class="sub reveal d2" data-ru="ODN — студия разработки. Сайты, Telegram Mini Apps и мобильные приложения. Чистый дизайн, быстрая разработка, внимание к деталям." data-en="ODN — a development studio. Websites, Telegram Mini Apps and mobile apps. Clean design, fast development, attention to detail.">ODN — студия разработки. Сайты, Telegram Mini Apps и мобильные приложения. Чистый дизайн, быстрая разработка, внимание к деталям.</p>
+    <div class="cta-row reveal d3">
+      <a href="#contact" class="btn btn-primary"><span data-ru="Обсудить проект" data-en="Discuss a project">Обсудить проект</span></a>
+      <a href="#portfolio" class="btn btn-ghost"><span data-ru="Смотреть работы" data-en="View work">Смотреть работы</span> ›</a>
+    </div>
+    <div class="term-stage reveal d3">
+      <div class="terminal" id="terminal">
+        <div class="term-bar"><span class="tl r"></span><span class="tl y"></span><span class="tl g"></span><span class="term-title">odn — zsh — 80×24</span></div>
+        <div class="term-body" id="termBody"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH MARQUEE -->
+<div class="marquee">
+  <div class="marquee-track" id="mtrack">
+    <span>React</span><span>Next.js</span><span>TypeScript</span><span>Node.js</span><span>Swift</span><span>Kotlin</span><span>Flutter</span><span>Telegram API</span><span>Figma</span><span>PostgreSQL</span><span>Tailwind</span><span>Framer Motion</span>
+  </div>
+</div>
+
+<!-- SERVICES — bento -->
+<section class="block" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag" data-ru="Услуги" data-en="Services">Услуги</div>
+      <h2 data-ru="Что мы создаём" data-en="What we create">Что мы создаём</h2>
+      <p data-ru="Полный цикл — от идеи и дизайна до запуска и поддержки." data-en="Full cycle — from idea and design to launch and support.">Полный цикл — от идеи и дизайна до запуска и поддержки.</p>
+    </div>
+    <div class="bento">
+      <div class="b wide reveal">
+        <span class="ghost">🌐</span>
+        <div class="ico">🌐</div>
+        <h3 data-ru="Сайты и лендинги" data-en="Websites & landings">Сайты и лендинги</h3>
+        <p data-ru="Адаптивные сайты-визитки, лендинги и корпоративные сайты с анимацией и высокой конверсией." data-en="Responsive business sites, landings and corporate sites with animation and high conversion.">Адаптивные сайты-визитки, лендинги и корпоративные сайты с анимацией и высокой конверсией.</p>
+        <div class="tags"><span class="tag">Landing</span><span class="tag">Corporate</span><span class="tag">SEO</span></div>
+      </div>
+      <div class="b narrow reveal d1">
+        <span class="ghost">✈️</span>
+        <div class="ico">✈️</div>
+        <h3 data-ru="Telegram Mini Apps" data-en="Telegram Mini Apps">Telegram Mini Apps</h3>
+        <p data-ru="Мини-приложения и боты: магазины, сервисы, игры." data-en="Mini apps and bots: shops, services, games.">Мини-приложения и боты: магазины, сервисы, игры.</p>
+      </div>
+      <div class="b reveal d2">
+        <span class="ghost">📱</span>
+        <div class="ico">📱</div>
+        <h3 data-ru="Мобильные приложения" data-en="Mobile apps">Мобильные приложения</h3>
+        <p data-ru="Кроссплатформенные приложения для iOS и Android с нативным ощущением." data-en="Cross-platform apps for iOS and Android with a native feel.">Кроссплатформенные приложения для iOS и Android с нативным ощущением.</p>
+        <div class="tags"><span class="tag">iOS</span><span class="tag">Android</span></div>
+      </div>
+      <div class="b reveal d3">
+        <span class="ghost">⚙️</span>
+        <div class="ico">⚙️</div>
+        <h3 data-ru="Веб-сервисы" data-en="Web services">Веб-сервисы</h3>
+        <p data-ru="Дашборды, CRM, личные кабинеты и автоматизация бизнес-процессов." data-en="Dashboards, CRM, dashboards and business process automation.">Дашборды, CRM, личные кабинеты и автоматизация бизнес-процессов.</p>
+        <div class="tags"><span class="tag">CRM</span><span class="tag">Dashboard</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="block why" id="process">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag" data-ru="Процесс" data-en="Process">Процесс</div>
+      <h2 data-ru="Как мы работаем" data-en="How we work">Как мы работаем</h2>
+      <p data-ru="Понятный путь от первого сообщения до запуска." data-en="A clear path from first message to launch.">Понятный путь от первого сообщения до запуска.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="n">1</div><h4 data-ru="Обсуждение" data-en="Discovery">Обсуждение</h4><p data-ru="Узнаём задачу, цели и сроки. Бесплатная оценка." data-en="We learn your task, goals and timeline. Free estimate.">Узнаём задачу, цели и сроки. Бесплатная оценка.</p></div>
+      <div class="step reveal d1"><div class="n">2</div><h4 data-ru="Дизайн" data-en="Design">Дизайн</h4><p data-ru="Прототип и чистый минималистичный макет с анимациями." data-en="Prototype and a clean minimal design with animations.">Прототип и чистый минималистичный макет с анимациями.</p></div>
+      <div class="step reveal d2"><div class="n">3</div><h4 data-ru="Разработка" data-en="Development">Разработка</h4><p data-ru="Кодим, тестируем, показываем прогресс на каждом этапе." data-en="We code, test and show progress at every stage.">Кодим, тестируем, показываем прогресс на каждом этапе.</p></div>
+      <div class="step reveal d3"><div class="n">4</div><h4 data-ru="Запуск" data-en="Launch">Запуск</h4><p data-ru="Публикуем, передаём проект и остаёмся на поддержке." data-en="We publish, hand over and stay for support.">Публикуем, передаём проект и остаёмся на поддержке.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="block" id="why">
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat reveal"><div class="num" data-count="50" data-suffix="+">0</div><div class="lbl" data-ru="Реализованных проектов" data-en="Projects delivered">Реализованных проектов</div></div>
+      <div class="stat reveal d1"><div class="num" data-count="7" data-suffix=" дн.">0</div><div class="lbl" data-ru="Средний срок лендинга" data-en="Avg. landing turnaround">Средний срок лендинга</div></div>
+      <div class="stat reveal d2"><div class="num" data-count="100" data-suffix="%">0</div><div class="lbl" data-ru="Адаптив под мобильные" data-en="Mobile responsive">Адаптив под мобильные</div></div>
+      <div class="stat reveal d3"><div class="num">24/7</div><div class="lbl" data-ru="Поддержка после запуска" data-en="Post-launch support">Поддержка после запуска</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="portfolio">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag" data-ru="Портфолио" data-en="Portfolio">Портфолио</div>
+      <h2 data-ru="Избранные работы" data-en="Selected work">Избранные работы</h2>
+      <p data-ru="Несколько примеров — замените на свои реальные кейсы." data-en="A few examples — replace with your real cases.">Несколько примеров — замените на свои реальные кейсы.</p>
+    </div>
+    <div class="port-grid">
+      <div class="port p1 reveal"><div class="ph"></div><div class="meta"><div class="t">Shop Mini App</div><div class="c" data-ru="Telegram-магазин" data-en="Telegram shop">Telegram-магазин</div></div></div>
+      <div class="port p2 reveal d1"><div class="ph"></div><div class="meta"><div class="t">FitTrack</div><div class="c" data-ru="Мобильное приложение" data-en="Mobile app">Мобильное приложение</div></div></div>
+      <div class="port p3 reveal d2"><div class="ph"></div><div class="meta"><div class="t">Studio Lumen</div><div class="c" data-ru="Лендинг" data-en="Landing page">Лендинг</div></div></div>
+      <div class="port p4 reveal"><div class="ph"></div><div class="meta"><div class="t">BookFlow</div><div class="c" data-ru="Сервис записи" data-en="Booking service">Сервис записи</div></div></div>
+      <div class="port p5 reveal d1"><div class="ph"></div><div class="meta"><div class="t">Nova CRM</div><div class="c" data-ru="Веб-сервис" data-en="Web service">Веб-сервис</div></div></div>
+      <div class="port p6 reveal d2"><div class="ph"></div><div class="meta"><div class="t">QuizBot</div><div class="c" data-ru="Telegram-бот" data-en="Telegram bot">Telegram-бот</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="block contact" id="contact">
+  <div class="wrap">
+    <div class="contact-box reveal">
+      <h2 data-ru="Есть идея? Давайте обсудим" data-en="Got an idea? Let's talk">Есть идея? Давайте обсудим</h2>
+      <p data-ru="Ответ в течение пары часов. Бесплатная консультация и оценка проекта." data-en="Reply within a couple of hours. Free consultation and project estimate.">Ответ в течение пары часов. Бесплатная консультация и оценка проекта.</p>
+      <div class="contacts">
+        <a href="https://t.me/username" target="_blank" rel="noopener" class="cbtn tg">✈️ Telegram</a>
+        <a href="https://wa.me/00000000000" target="_blank" rel="noopener" class="cbtn wa">💬 WhatsApp</a>
+        <a href="mailto:hello@odn.studio" class="cbtn em">✉️ Email</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">© 2026 ODN · <span data-ru="Студия разработки цифровых продуктов" data-en="Digital product development studio">Студия разработки цифровых продуктов</span></div></footer>
+
+<script type="module" src="/src/scripts/main.js"></script>
+</body>
+</html>
