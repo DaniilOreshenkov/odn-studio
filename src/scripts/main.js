@@ -299,7 +299,6 @@ if (term) {
         }
 
         showInput();
-        term.scrollIntoView({ block: 'nearest' });
       }
     });
   }
