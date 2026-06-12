@@ -374,6 +374,81 @@ document.addEventListener('DOMContentLoaded', () => {
     marqueeTrack.innerHTML += marqueeTrack.innerHTML;
   }
 
+  const pintNav = document.getElementById('pintNav');
+  const pintPanels = document.getElementById('pintPanels');
+
+  if (pintNav && pintPanels) {
+    const steps = Array.from(pintNav.querySelectorAll('.pint-step'));
+    const panels = Array.from(pintPanels.querySelectorAll('.pint-panel'));
+    let current = 0;
+    let autoTimer = null;
+    let paused = false;
+
+    function startTick(idx) {
+      const fill = steps[idx] && steps[idx].querySelector('.pint-prog-fill');
+      if (!fill) return;
+      fill.style.transition = 'none';
+      fill.style.height = '0%';
+      fill.offsetHeight; // reflow
+      steps[idx].classList.add('is-ticking');
+    }
+
+    function stopAllTicks() {
+      steps.forEach((s) => {
+        s.classList.remove('is-ticking');
+        const fill = s.querySelector('.pint-prog-fill');
+        if (fill) { fill.style.transition = 'none'; fill.style.height = '0%'; }
+      });
+    }
+
+    function goTo(idx) {
+      stopAllTicks();
+      steps.forEach((s, i) => s.classList.toggle('is-active', i === idx));
+      panels.forEach((p, i) => p.classList.toggle('is-active', i === idx));
+      current = idx;
+      clearTimeout(autoTimer);
+      if (!paused) scheduleAuto();
+    }
+
+    function scheduleAuto() {
+      clearTimeout(autoTimer);
+      startTick(current);
+      autoTimer = setTimeout(() => {
+        goTo((current + 1) % steps.length);
+      }, 5000);
+    }
+
+    steps.forEach((step, i) => step.addEventListener('click', () => goTo(i)));
+
+    const procSection = document.getElementById('process');
+    if (procSection) {
+      procSection.addEventListener('mouseenter', () => {
+        paused = true;
+        clearTimeout(autoTimer);
+        stopAllTicks();
+      });
+      procSection.addEventListener('mouseleave', () => {
+        paused = false;
+        scheduleAuto();
+      });
+    }
+
+    // ── Reveal nav on scroll into view, then start auto ──
+    const pintObs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            pintNav.classList.add('pint-in');
+            scheduleAuto();
+            pintObs.disconnect();
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+    pintObs.observe(pintNav);
+  }
+
   if (window.matchMedia('(min-width: 761px)').matches) {
     document.querySelectorAll('.btn-primary').forEach((button) => {
       button.addEventListener('mousemove', (event) => {
@@ -402,6 +477,7 @@ document.addEventListener('DOMContentLoaded', () => {
         card.style.transform = '';
       });
     });
+
   }
 });
 
