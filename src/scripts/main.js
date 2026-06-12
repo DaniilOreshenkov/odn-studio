@@ -1,13 +1,7 @@
 function toggleTheme() {
   const root = document.documentElement;
   const isDark = root.getAttribute('data-theme') === 'dark';
-
   root.setAttribute('data-theme', isDark ? 'light' : 'dark');
-
-  const themeBtn = document.getElementById('themeBtn');
-  if (themeBtn) {
-    themeBtn.textContent = isDark ? '🌙' : '☀️';
-  }
 }
 
 function setLang(lang) {
@@ -42,14 +36,8 @@ window.setLang = setLang;
 window.toggleMenu = toggleMenu;
 
 document.addEventListener('DOMContentLoaded', () => {
-  const themeBtn = document.getElementById('themeBtn');
-
   if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     document.documentElement.setAttribute('data-theme', 'dark');
-
-    if (themeBtn) {
-      themeBtn.textContent = '☀️';
-    }
   }
 
   const navLinks = document.getElementById('navLinks');
