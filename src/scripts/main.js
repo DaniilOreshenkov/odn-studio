@@ -70,13 +70,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const progress = document.getElementById('progress');
   if (progress) {
+    let scrollRaf;
     window.addEventListener('scroll', () => {
-      const page = document.documentElement;
-      const maxScroll = page.scrollHeight - page.clientHeight;
-
-      progress.style.width =
-        maxScroll > 0 ? `${(page.scrollTop / maxScroll) * 100}%` : '0%';
-    });
+      cancelAnimationFrame(scrollRaf);
+      scrollRaf = requestAnimationFrame(() => {
+        const page = document.documentElement;
+        const maxScroll = page.scrollHeight - page.clientHeight;
+        progress.style.width =
+          maxScroll > 0 ? `${(page.scrollTop / maxScroll) * 100}%` : '0%';
+      });
+    }, { passive: true });
   }
 
   const revealObserver = new IntersectionObserver(
@@ -131,12 +134,17 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const spotlight = document.getElementById('spotlight');
-  if (spotlight) {
+  const isTouch = window.matchMedia('(hover:none)').matches;
+  if (spotlight && !isTouch) {
+    let rafId;
     window.addEventListener('mousemove', (event) => {
-      spotlight.style.opacity = '1';
-      spotlight.style.left = `${event.clientX}px`;
-      spotlight.style.top = `${event.clientY}px`;
-    });
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        spotlight.style.opacity = '1';
+        spotlight.style.left = `${event.clientX}px`;
+        spotlight.style.top = `${event.clientY}px`;
+      });
+    }, { passive: true });
 
     document.addEventListener('mouseleave', () => {
       spotlight.style.opacity = '0';
