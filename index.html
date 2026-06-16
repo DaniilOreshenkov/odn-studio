@@ -85,6 +85,10 @@
       <a href="#process" data-ru="Как работаем" data-en="Process">Как работаем</a>
       <a href="#ai" data-ru="AI" data-en="AI">AI</a>
       <a href="#contact" data-ru="Контакты" data-en="Contact">Контакты</a>
+      <div class="nav-lang-mobile">
+        <button id="ruBtnMobile" class="active" onclick="setLang('ru');document.getElementById('ruBtn').classList.add('active');document.getElementById('enBtn').classList.remove('active');this.classList.add('active');document.getElementById('enBtnMobile').classList.remove('active')">RU</button>
+        <button id="enBtnMobile" onclick="setLang('en');document.getElementById('enBtn').classList.add('active');document.getElementById('ruBtn').classList.remove('active');this.classList.add('active');document.getElementById('ruBtnMobile').classList.remove('active')">EN</button>
+      </div>
     </nav>
 
     <div class="ctrls">
