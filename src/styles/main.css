@@ -76,22 +76,16 @@ h1 .grad{background:linear-gradient(120deg,#0071e3,#9b51e0,#ff2d92,#0071e3);back
   font-weight:600;
   letter-spacing:-.01em;
   padding:15px 30px;
-  box-shadow:0 4px 20px rgba(0,113,227,.30);
-  transition:transform .2s ease,box-shadow .2s ease,opacity .2s ease;
+  box-shadow:0 4px 20px rgba(0,113,227,.25);
+  transition:opacity .15s ease,box-shadow .15s ease;
 }
 .btn-primary:hover{
-  transform:translateY(-2px);
-  box-shadow:0 8px 32px rgba(0,113,227,.42);
-  opacity:.92;
+  opacity:.88;
+  box-shadow:0 6px 24px rgba(0,113,227,.35);
 }
-.btn-primary:active{transform:translateY(0);opacity:1;transition-duration:.08s}
+.btn-primary:active{opacity:.75;box-shadow:none;transition-duration:.06s}
 /* arrow icon */
-.btn-arrow{
-  display:inline-block;
-  transition:transform .3s cubic-bezier(.34,1.56,.64,1);
-  font-style:normal;
-}
-.btn-primary:hover .btn-arrow{transform:translateX(5px)}
+.btn-arrow{display:inline-block;font-style:normal}
 
 .btn-ghost{background:transparent;color:var(--accent);border:1px solid var(--accent);transition:background .2s,color .2s,transform .2s}
 .btn-ghost:hover{background:var(--accent);color:#fff;transform:translateY(-2px)}
