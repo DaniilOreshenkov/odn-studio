@@ -69,31 +69,21 @@ h1 .grad{background:linear-gradient(120deg,#0071e3,#9b51e0,#ff2d92,#0071e3);back
 .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:980px;font-size:16px;font-weight:500;text-decoration:none;cursor:pointer;border:none;position:relative;overflow:hidden;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s}
 
 /* ── Primary CTA — animated gradient pill ── */
-@keyframes grad-shift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 .btn-primary{
-  background:linear-gradient(135deg,#0071e3,#6e36cc,#ff2d92,#0071e3);
-  background-size:250% 250%;
+  background:linear-gradient(135deg,#0071e3,#6e36cc,#ff2d92);
   color:#fff;
   font-weight:600;
   letter-spacing:-.01em;
   padding:15px 30px;
-  box-shadow:0 4px 24px rgba(0,113,227,.32);
-  animation:grad-shift 5s ease infinite;
-  transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s;
+  box-shadow:0 4px 20px rgba(0,113,227,.30);
+  transition:transform .2s ease,box-shadow .2s ease,opacity .2s ease;
 }
 .btn-primary:hover{
-  transform:scale(1.06) translateY(-2px);
-  box-shadow:0 10px 48px rgba(0,113,227,.48),0 0 56px rgba(155,81,224,.28);
-  animation:grad-shift 2s ease infinite;
+  transform:translateY(-2px);
+  box-shadow:0 8px 32px rgba(0,113,227,.42);
+  opacity:.92;
 }
-.btn-primary:active{transform:scale(.97);transition-duration:.08s}
-/* shimmer sweep */
-.btn-primary::after{
-  content:"";position:absolute;top:0;left:-130%;width:55%;height:100%;
-  background:linear-gradient(110deg,transparent,rgba(255,255,255,.45),transparent);
-  transform:skewX(-18deg);transition:left .55s ease;
-}
-.btn-primary:hover::after{left:140%}
+.btn-primary:active{transform:translateY(0);opacity:1;transition-duration:.08s}
 /* arrow icon */
 .btn-arrow{
   display:inline-block;
@@ -935,7 +925,7 @@ section.block{padding:90px 0;position:relative;z-index:2;contain:layout}
   #spotlight{display:none}
   .orbs{display:none}
   h1 .grad{animation:none;background:linear-gradient(120deg,#0071e3,#9b51e0,#ff2d92);-webkit-background-clip:text;background-clip:text}
-  .btn-primary{animation:none;background:linear-gradient(135deg,#0071e3,#6e36cc,#ff2d92)}
+  .btn-primary{background:linear-gradient(135deg,#0071e3,#6e36cc,#ff2d92)}
   header{backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
   .bento{grid-template-columns:1fr}
   .b,.b.wide,.b.narrow{grid-column:span 1}
