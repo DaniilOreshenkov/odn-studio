@@ -1343,99 +1343,124 @@ section.block{padding:90px 0;position:relative;z-index:2;contain:layout}
   letter-spacing:-.01em;
   transition:color .5s;
 }
-.cn-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:72px}
-.cn-btn{font-size:17px;padding:16px 34px}
-.cn-btn-ghost{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:16px 30px;border-radius:980px;
-  font-size:17px;font-weight:500;
-  text-decoration:none;cursor:pointer;
-  color:var(--cn-ghost-color);
-  border:1px solid var(--cn-ghost-border);
-  background:var(--cn-ghost-bg);
-  transition:background .2s,color .2s,border-color .2s,transform .2s;
-}
-.cn-btn-ghost:hover{
-  background:var(--cn-ghost-hover-bg);
-  color:var(--cn-ghost-hover-color);
-  border-color:var(--cn-ghost-border);
-  transform:translateY(-2px);
-}
-.cn-cards{
+/* bento grid */
+.cn-bento{
   display:grid;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns:1.55fr 1fr;
   gap:14px;
-  max-width:560px;
   width:100%;
+  max-width:780px;
 }
-.cn-card{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:10px;
-  padding:32px 24px 28px;
-  border-radius:24px;
+
+/* Telegram card — primary */
+.cn-tg-card{
+  position:relative;overflow:hidden;
+  background:var(--cn-strip-bg);
+  border:1px solid rgba(0,113,227,.28);
+  border-radius:28px;
+  padding:40px 36px;
   text-decoration:none;
   color:var(--cn-chip-color);
+  display:flex;flex-direction:column;gap:20px;
+  transition:transform .25s cubic-bezier(.2,.7,.2,1),border-color .2s,box-shadow .25s;
+}
+.cn-tg-card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(0,113,227,.55);
+  box-shadow:0 28px 64px -20px rgba(0,113,227,.28);
+}
+.cn-tg-glow{
+  position:absolute;top:-100px;left:-80px;
+  width:360px;height:360px;
+  background:radial-gradient(circle,rgba(0,113,227,.14) 0%,transparent 65%);
+  pointer-events:none;
+}
+.cn-tg-top{
+  display:flex;align-items:center;justify-content:space-between;
+}
+.cn-tg-ico{
+  width:54px;height:54px;border-radius:16px;
+  background:rgba(0,113,227,.12);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--accent);
+  transition:background .2s;
+}
+.cn-tg-card:hover .cn-tg-ico{background:rgba(0,113,227,.2)}
+.cn-tg-badge{
+  font-size:12px;font-weight:600;letter-spacing:.02em;
+  padding:5px 13px;border-radius:999px;
+  background:rgba(0,113,227,.10);
+  color:var(--accent);
+  transition:background .2s;
+}
+.cn-tg-card:hover .cn-tg-badge{background:rgba(0,113,227,.18)}
+.cn-tg-handle{
+  font-size:clamp(26px,4.5vw,40px);
+  font-weight:800;letter-spacing:-.03em;line-height:1;
+  color:var(--cn-title);
+  transition:color .5s;
+}
+.cn-tg-cta{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:15px;font-weight:600;
+  color:var(--accent);
+  margin-top:auto;
+}
+.cn-tg-arrow{
+  display:inline-block;
+  transition:transform .2s;
+}
+.cn-tg-card:hover .cn-tg-arrow,.cn-em-card:hover .cn-tg-arrow{transform:translateX(5px)}
+
+/* Email card — secondary */
+.cn-em-card{
+  position:relative;overflow:hidden;
   background:var(--cn-strip-bg);
   border:1px solid var(--cn-strip-border);
-  transition:background .2s,border-color .2s,transform .25s cubic-bezier(.2,.7,.2,1),color .5s;
-  text-align:center;
-  position:relative;
-  overflow:hidden;
+  border-radius:28px;
+  padding:36px 28px;
+  text-decoration:none;
+  color:var(--cn-chip-color);
+  display:flex;flex-direction:column;gap:14px;
+  transition:transform .25s cubic-bezier(.2,.7,.2,1),border-color .2s,box-shadow .25s;
 }
-.cn-card::before{
-  content:"";
-  position:absolute;inset:0;
-  border-radius:inherit;
-  background:radial-gradient(circle at 60% 0%,rgba(0,113,227,.10),transparent 60%);
-  opacity:0;
-  transition:opacity .3s;
+.cn-em-card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(0,113,227,.38);
+  box-shadow:0 24px 56px -18px rgba(0,113,227,.20);
 }
-.cn-card:hover{
-  transform:translateY(-6px);
-  border-color:rgba(0,113,227,.35);
-  box-shadow:0 20px 60px -20px rgba(0,113,227,.22);
-  color:var(--cn-chip-hover-color);
-}
-.cn-card:hover::before{opacity:1}
-.cn-card:hover .cn-card-ico{background:rgba(0,113,227,.15);color:var(--accent)}
-.cn-card:hover .cn-card-hint{opacity:1;transform:translateY(0)}
-.cn-card-ico{
-  width:52px;height:52px;
-  border-radius:16px;
+.cn-em-ico{
+  width:50px;height:50px;border-radius:14px;
   background:var(--cn-chip-ico-bg);
   display:flex;align-items:center;justify-content:center;
   color:var(--cn-chip-ico-color);
   transition:background .2s,color .2s;
-  margin-bottom:4px;
 }
-.cn-card-label{
+.cn-em-card:hover .cn-em-ico{background:rgba(0,113,227,.12);color:var(--accent)}
+.cn-em-label{
   font-size:11px;font-weight:700;
-  letter-spacing:.07em;text-transform:uppercase;
+  text-transform:uppercase;letter-spacing:.07em;
   color:var(--cn-chip-label-color);
   transition:color .5s;
 }
-.cn-card-val{
+.cn-em-addr{
+  font-size:13px;font-weight:500;line-height:1.45;
+  word-break:break-all;
+  color:var(--cn-title);
+  transition:color .5s;
+}
+.cn-em-cta{
+  display:inline-flex;align-items:center;gap:6px;
   font-size:14px;font-weight:600;
-  word-break:break-all;line-height:1.3;
-}
-.cn-card-hint{
-  font-size:13px;font-weight:500;
   color:var(--accent);
-  opacity:0;
-  transform:translateY(4px);
-  transition:opacity .2s,transform .2s;
-  margin-top:2px;
+  margin-top:auto;
 }
+
 @media(max-width:640px){
-  .cn-cards{grid-template-columns:1fr 1fr;max-width:100%}
-  .cn-card{padding:24px 16px}
-  .cn-card-val{font-size:12px}
-  .cn-card-hint{opacity:.6;transform:none}
+  .cn-bento{grid-template-columns:1fr}
   .cn-title{letter-spacing:-.03em}
-  .cn-cta{flex-direction:column;align-items:center}
-  .cn-btn,.cn-btn-ghost{width:100%;justify-content:center}
+  .cn-tg-card{padding:30px 24px}
+  .cn-em-card{padding:28px 24px}
 }
 
 /* ═══════════════════════════════════════════
