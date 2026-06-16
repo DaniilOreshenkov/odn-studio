@@ -482,141 +482,138 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── AI Feed animation ─────────────────────────────────────────
   const aiwFeed = document.getElementById('aiwFeed');
   if (aiwFeed) {
-    const lang = () => document.documentElement.lang === 'en' ? 'en' : 'ru';
+    const L = () => document.documentElement.lang === 'en' ? 'en' : 'ru';
 
     const scenarios = [
-      // Scenario 1: Telegram lead → qualify → CRM → reply → notify
       [
-        { type:'in',  src:'Telegram', time:'09:14',
+        { type:'in',  srcRu:'Telegram', srcEn:'Telegram', time:'09:14',
           ru:'Иван М.: «Хочу заказать лендинг, сколько стоит и как быстро?»',
           en:'Ivan M.: «I want a landing page, how much and how fast?»' },
-        { type:'ai',  src:'AI', time:'09:14',
+        { type:'ai',  srcRu:'AI', srcEn:'AI', time:'09:14',
           ru:'Классификация: запрос на цену · категория: Сайт · намерение: покупка',
           en:'Classification: price inquiry · category: Website · intent: purchase' },
-        { type:'ai',  src:'AI', time:'09:14',
+        { type:'ai',  srcRu:'AI', srcEn:'AI', time:'09:14',
           ru:'Извлечены параметры: тип → лендинг, срок → не указан, бюджет → не указан',
-          en:'Extracted params: type → landing, deadline → not stated, budget → not stated' },
-        { type:'out', src:'CRM',   srcClass:'aiw-event-src--out', time:'09:14',
+          en:'Extracted params: type → landing, deadline → not stated, budget → not stated',
+          srcClass:'aiw-event-src--ai' },
+        { type:'out', srcRu:'CRM', srcEn:'CRM', srcClass:'aiw-event-src--out', time:'09:14',
           ru:'Лид создан: Иван М. · источник: Telegram · статус: Новый · этап: Квалификация',
           en:'Lead created: Ivan M. · source: Telegram · status: New · stage: Qualification' },
-        { type:'out', src:'Ответ', srcClass:'aiw-event-src--reply', time:'09:14',
-          ru:'«Привет, Иван! Лендинг — от 7 дней, от 60 000 ₽. Расскажите подробнее о задаче?»',
-          en:'«Hi Ivan! Landing page — from 7 days, from 60,000 ₽. Tell us more about your task?»' },
-        { type:'out', src:'Менеджер', srcClass:'aiw-event-src--notify', time:'09:14',
+        { type:'out', srcRu:'Ответ', srcEn:'Reply', srcClass:'aiw-event-src--reply', time:'09:14',
+          ru:'«Привет, Иван! Лендинг — от 7 дней, от 60 000 ₽. Расскажите подробнее?»',
+          en:'«Hi Ivan! Landing page — from 7 days, from 60,000 ₽. Tell us more?»' },
+        { type:'out', srcRu:'Менеджер', srcEn:'Manager', srcClass:'aiw-event-src--notify', time:'09:14',
           ru:'Уведомление отправлено: горячий лид, Telegram, ответ дан',
           en:'Notification sent: hot lead, Telegram, reply delivered' },
       ],
-      // Scenario 2: Form lead → AI qualify → schedule call → confirm
       [
-        { type:'in',  src:'Форма', time:'11:02',
+        { type:'in',  srcRu:'Форма', srcEn:'Form', time:'11:02',
           ru:'Анна С.: «Нужен AI-бот для поддержки клиентов в Telegram, бюджет ~150к»',
           en:'Anna S.: «Need AI support bot for Telegram, budget ~150k»' },
-        { type:'ai',  src:'AI', time:'11:02',
+        { type:'ai',  srcRu:'AI', srcEn:'AI', srcClass:'aiw-event-src--ai', time:'11:02',
           ru:'Классификация: AI Systems · приоритет: HIGH · бюджет: квалифицирован',
           en:'Classification: AI Systems · priority: HIGH · budget: qualified' },
-        { type:'ai',  src:'AI', time:'11:02',
+        { type:'ai',  srcRu:'AI', srcEn:'AI', srcClass:'aiw-event-src--ai', time:'11:02',
           ru:'Подобраны кейсы: AI-поддержка × 3 · сформирован персональный ответ',
           en:'Matched cases: AI support × 3 · personalised reply generated' },
-        { type:'out', src:'CRM',   srcClass:'aiw-event-src--out', time:'11:02',
+        { type:'out', srcRu:'CRM', srcEn:'CRM', srcClass:'aiw-event-src--out', time:'11:02',
           ru:'Лид: Анна С. · сегмент: Enterprise · тег: ai-bot · этап: Презентация',
           en:'Lead: Anna S. · segment: Enterprise · tag: ai-bot · stage: Presentation' },
-        { type:'out', src:'Ответ', srcClass:'aiw-event-src--reply', time:'11:02',
-          ru:'«Анна, привет! Мы делаем именно такие системы. Удобно созвониться завтра в 12:00?»',
+        { type:'out', srcRu:'Ответ', srcEn:'Reply', srcClass:'aiw-event-src--reply', time:'11:02',
+          ru:'«Анна, привет! Мы делаем именно такие системы. Созвонимся завтра в 12:00?»',
           en:'«Anna, hi! We build exactly this. Can we call tomorrow at 12:00?»' },
-        { type:'out', src:'Менеджер', srcClass:'aiw-event-src--notify', time:'11:03',
+        { type:'out', srcRu:'Менеджер', srcEn:'Manager', srcClass:'aiw-event-src--notify', time:'11:03',
           ru:'🔥 VIP-лид · Анна С. · бюджет 150к · ждёт звонка',
           en:'🔥 VIP lead · Anna S. · budget 150k · awaiting call' },
       ],
-      // Scenario 3: WhatsApp → content request → generate → deliver
       [
-        { type:'in',  src:'WhatsApp', time:'14:37',
-          ru:'Клиент: «Напишите 3 поста для инстаграм про наш новый продукт — CRM для агентств»',
-          en:'Client: «Write 3 Instagram posts about our new product — CRM for agencies»' },
-        { type:'ai',  src:'AI', time:'14:37',
+        { type:'in',  srcRu:'WhatsApp', srcEn:'WhatsApp', time:'14:37',
+          ru:'Клиент: «Напишите 3 поста про наш новый продукт — CRM для агентств»',
+          en:'Client: «Write 3 posts about our new product — CRM for agencies»' },
+        { type:'ai',  srcRu:'AI', srcEn:'AI', srcClass:'aiw-event-src--ai', time:'14:37',
           ru:'Тип задачи: контент · платформа: Instagram · тональность: анализируется',
           en:'Task type: content · platform: Instagram · tone: analysing' },
-        { type:'ai',  src:'AI', time:'14:37',
+        { type:'ai',  srcRu:'AI', srcEn:'AI', srcClass:'aiw-event-src--ai', time:'14:37',
           ru:'Тональность бренда определена · генерирую 3 варианта постов…',
           en:'Brand tone identified · generating 3 post variants…' },
-        { type:'out', src:'Контент', srcClass:'aiw-event-src--content', time:'14:38',
+        { type:'out', srcRu:'Контент', srcEn:'Content', srcClass:'aiw-event-src--content', time:'14:38',
           ru:'Готово: 3 поста сгенерированы · хэштеги добавлены · отправлено в чат',
           en:'Done: 3 posts generated · hashtags added · sent to chat' },
-        { type:'out', src:'Ответ', srcClass:'aiw-event-src--reply', time:'14:38',
-          ru:'«Готово! Вот 3 варианта постов с хэштегами. Хотите скорректировать тон?»',
-          en:'«Done! Here are 3 post options with hashtags. Want to adjust the tone?»' },
-        { type:'out', src:'CRM',   srcClass:'aiw-event-src--out', time:'14:38',
+        { type:'out', srcRu:'Ответ', srcEn:'Reply', srcClass:'aiw-event-src--reply', time:'14:38',
+          ru:'«Готово! Вот 3 варианта постов с хэштегами. Скорректировать тон?»',
+          en:'«Done! Here are 3 posts with hashtags. Want to adjust the tone?»' },
+        { type:'out', srcRu:'CRM', srcEn:'CRM', srcClass:'aiw-event-src--out', time:'14:38',
           ru:'Задача закрыта · тип: контент · время выполнения: 58 сек',
           en:'Task closed · type: content · completion time: 58 sec' },
       ],
     ];
 
     let scenarioIdx = 0;
-    let running = false;
+    let gen = 0; // increment to cancel current run
 
     function makeEvent(ev) {
       const el = document.createElement('div');
       el.className = `aiw-event aiw-event--${ev.type} aiw-event--new`;
       const srcClass = ev.srcClass || '';
-      el.innerHTML = `<span class="aiw-event-src ${srcClass}">${ev.src}</span>`
-        + `<span class="aiw-event-text">${lang() === 'en' ? ev.en : ev.ru}</span>`
+      const src = L() === 'en' ? ev.srcEn : ev.srcRu;
+      const text = L() === 'en' ? ev.en : ev.ru;
+      el.innerHTML = `<span class="aiw-event-src ${srcClass}">${src}</span>`
+        + `<span class="aiw-event-text">${text}</span>`
         + `<span class="aiw-event-time">${ev.time}</span>`;
       return el;
     }
 
     function makeTyping() {
       const el = document.createElement('div');
-      el.className = 'aiw-event aiw-event--ai aiw-event--typing aiw-event--new';
+      el.className = 'aiw-event aiw-event--ai aiw-event--new';
       el.innerHTML = '<span class="aiw-event-src aiw-event-src--ai">AI</span>'
         + '<span class="aiw-event-text"><span class="aiw-typing"><span></span><span></span><span></span></span></span>';
       return el;
     }
 
-    async function runScenario(events) {
+    function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+    async function runScenario(events, myGen) {
       aiwFeed.innerHTML = '';
       for (let i = 0; i < events.length; i++) {
-        // show typing before AI steps
+        if (gen !== myGen) return;
         if (events[i].type === 'ai') {
           const t = makeTyping();
           aiwFeed.appendChild(t);
           aiwFeed.scrollTop = aiwFeed.scrollHeight;
           await delay(900);
+          if (gen !== myGen) return;
           t.remove();
         }
+        if (gen !== myGen) return;
         const el = makeEvent(events[i]);
         aiwFeed.appendChild(el);
         aiwFeed.scrollTop = aiwFeed.scrollHeight;
-        // remove .new after transition
         setTimeout(() => el.classList.remove('aiw-event--new'), 400);
         await delay(i < 2 ? 700 : 850);
       }
     }
 
-    function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
-
     async function loop() {
-      if (running) return;
-      running = true;
       while (true) {
-        await runScenario(scenarios[scenarioIdx % scenarios.length]);
+        const myGen = gen;
+        await runScenario(scenarios[scenarioIdx % scenarios.length], myGen);
+        if (gen !== myGen) {
+          // was restarted — re-run same scenario index
+          continue;
+        }
         scenarioIdx++;
-        await delay(2800); // pause before next scenario
+        await delay(2800);
       }
     }
 
-    // restart current scenario from beginning on lang switch
-    let loopStarted = false;
-    window._aiwRestartScenario = () => {
-      if (!loopStarted) return;
-      // cancel current run by incrementing a generation counter
-      aiwFeed.innerHTML = '';
-      runScenario(scenarios[(scenarioIdx - 1 + scenarios.length) % scenarios.length]);
-    };
+    // called from setLang — restart current scenario in new language
+    window._aiwRestartScenario = () => { gen++; };
 
-    // start when section enters viewport
     const aiwObs = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting) { loopStarted = true; loop(); aiwObs.disconnect(); }
-    }, { threshold: 0.3 });
-    aiwObs.observe(document.getElementById('ai'));
+      if (entries[0].isIntersecting) { loop(); aiwObs.disconnect(); }
+    }, { threshold: 0.1 });
+    aiwObs.observe(aiwFeed);
   }
 
 });
