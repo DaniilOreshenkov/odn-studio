@@ -22,6 +22,9 @@ function setLang(lang) {
     const words = curWords();
     rotator.textContent = words[wi % words.length];
   }
+
+  // re-render AI feed on lang switch
+  if (window._aiwRestartScenario) window._aiwRestartScenario();
 }
 
 function toggleMenu() {
@@ -600,9 +603,18 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
+    // restart current scenario from beginning on lang switch
+    let loopStarted = false;
+    window._aiwRestartScenario = () => {
+      if (!loopStarted) return;
+      // cancel current run by incrementing a generation counter
+      aiwFeed.innerHTML = '';
+      runScenario(scenarios[(scenarioIdx - 1 + scenarios.length) % scenarios.length]);
+    };
+
     // start when section enters viewport
     const aiwObs = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting) { loop(); aiwObs.disconnect(); }
+      if (entries[0].isIntersecting) { loopStarted = true; loop(); aiwObs.disconnect(); }
     }, { threshold: 0.3 });
     aiwObs.observe(document.getElementById('ai'));
   }
