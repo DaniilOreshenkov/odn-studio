@@ -1365,31 +1365,14 @@ section.block{padding:90px 0;position:relative;z-index:2;contain:layout}
   background:radial-gradient(circle,rgba(0,113,227,.14) 0%,transparent 65%);
   pointer-events:none;
 }
-.cn-tg-top{
-  display:flex;align-items:center;justify-content:space-between;
-}
 .cn-tg-ico{
-  width:54px;height:54px;border-radius:16px;
+  width:50px;height:50px;border-radius:14px;
   background:rgba(0,113,227,.12);
   display:flex;align-items:center;justify-content:center;
   color:var(--accent);
   transition:background .2s;
 }
 .cn-tg-card:hover .cn-tg-ico{background:rgba(0,113,227,.2)}
-.cn-tg-badge{
-  font-size:12px;font-weight:600;letter-spacing:.02em;
-  padding:5px 13px;border-radius:999px;
-  background:rgba(0,113,227,.10);
-  color:var(--accent);
-  transition:background .2s;
-}
-.cn-tg-card:hover .cn-tg-badge{background:rgba(0,113,227,.18)}
-.cn-tg-handle{
-  font-size:clamp(26px,4.5vw,40px);
-  font-weight:800;letter-spacing:-.03em;line-height:1;
-  color:var(--cn-title);
-  transition:color .5s;
-}
 .cn-tg-cta{
   display:inline-flex;align-items:center;gap:8px;
   font-size:15px;font-weight:600;
