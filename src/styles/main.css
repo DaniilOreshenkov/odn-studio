@@ -1312,7 +1312,7 @@ section.block{padding:90px 0;position:relative;z-index:2;contain:layout}
   letter-spacing:.01em;
   transition:background .5s,border-color .5s,color .5s;
 }
-.cn-eyebrow .live{width:7px;height:7px;flex-shrink:0}
+.cn-eyebrow .live{width:7px;height:7px;flex-shrink:0;border-radius:50%;background:#34c759;animation:pulse 2.4s infinite}
 .cn-title{
   font-size:clamp(52px,9vw,100px);
   font-weight:900;
