@@ -924,8 +924,8 @@ section.block{padding:90px 0;position:relative;z-index:2;contain:layout}
   header{backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
   .bento{grid-template-columns:1fr}
   .b,.b.wide,.b.narrow{grid-column:span 1}
-  .nav-links{position:fixed;top:52px;left:0;right:0;background:var(--surface);flex-direction:column;padding:24px;gap:18px;border-bottom:1px solid var(--border);transform:translateY(-130%);transition:transform .35s,background .45s,border-color .45s;align-items:flex-start}
-  .nav-links.open{transform:translateY(0)}
+  .nav-links{position:fixed;top:52px;left:0;right:0;background:var(--surface);flex-direction:column;padding:24px;gap:18px;border-bottom:1px solid var(--border);clip-path:inset(0 0 100% 0);transition:clip-path .32s cubic-bezier(.2,.8,.2,1),background .45s,border-color .45s;align-items:flex-start}
+  .nav-links.open{clip-path:inset(0 0 0 0)}
   .nav-links a{min-height:44px;display:flex;align-items:center;font-size:16px;width:100%}
   .burger{display:flex;min-width:44px;min-height:44px;align-items:center;justify-content:center}
   .theme-btn{width:34px;height:34px;min-width:44px;min-height:44px}
