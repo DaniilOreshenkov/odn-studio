@@ -1,0 +1,56 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#000000"/>
+
+  <!-- ambient glows -->
+  <ellipse cx="200" cy="150" rx="400" ry="300" fill="rgba(0,113,227,0.12)"/>
+  <ellipse cx="1050" cy="480" rx="380" ry="280" fill="rgba(155,81,224,0.10)"/>
+
+  <!-- logo mark -->
+  <g transform="translate(80, 72)">
+    <defs>
+      <linearGradient id="og-lg" x1="0" y1="0" x2="48" y2="48">
+        <stop stop-color="#0071e3"/>
+        <stop offset="1" stop-color="#9b51e0"/>
+      </linearGradient>
+    </defs>
+    <circle cx="24" cy="24" r="17" stroke="url(#og-lg)" stroke-width="3.5" fill="none"/>
+    <circle cx="41" cy="24" r="5" fill="url(#og-lg)"/>
+    <circle cx="24" cy="24" r="3.5" fill="url(#og-lg)"/>
+  </g>
+
+  <!-- ODN Studio wordmark -->
+  <text x="144" y="112" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="32" font-weight="600" fill="#ffffff" letter-spacing="-0.5">ODN Studio</text>
+
+  <!-- main headline -->
+  <text x="80" y="290" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="88" font-weight="800" fill="#ffffff" letter-spacing="-4">Сайты.</text>
+  <text x="80" y="390" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="88" font-weight="800" letter-spacing="-4">
+    <tspan fill="url(#og-grad)">Mini Apps.</tspan>
+  </text>
+  <defs>
+    <linearGradient id="og-grad" x1="80" y1="390" x2="700" y2="390" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0071e3"/>
+      <stop offset="1" stop-color="#9b51e0"/>
+    </linearGradient>
+  </defs>
+  <text x="80" y="490" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="88" font-weight="800" fill="#ffffff" letter-spacing="-4">AI-системы.</text>
+
+  <!-- sub -->
+  <text x="80" y="568" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="24" font-weight="400" fill="rgba(255,255,255,0.52)" letter-spacing="-0.3">Цифровые продукты, которые выглядят как бренд — и работают как инструмент</text>
+
+  <!-- right side decorative card -->
+  <rect x="820" y="180" width="320" height="200" rx="20" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+  <circle cx="856" cy="216" r="8" fill="#34c759"/>
+  <text x="876" y="221" font-family="-apple-system, sans-serif" font-size="14" fill="rgba(255,255,255,0.5)">Открыты для новых проектов</text>
+  <rect x="844" y="248" width="260" height="40" rx="10" fill="rgba(0,113,227,0.15)" stroke="rgba(0,113,227,0.3)" stroke-width="1"/>
+  <text x="864" y="274" font-family="-apple-system, sans-serif" font-size="16" font-weight="600" fill="#0a84ff">Написать в Telegram →</text>
+  <rect x="844" y="304" width="260" height="40" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+  <text x="974" y="330" font-family="-apple-system, sans-serif" font-size="14" fill="rgba(255,255,255,0.45)" text-anchor="middle">danieloreshenkov@yandex.ru</text>
+
+  <!-- stats row -->
+  <text x="820" y="440" font-family="-apple-system, sans-serif" font-size="36" font-weight="700" fill="#ffffff" letter-spacing="-1">50+</text>
+  <text x="820" y="466" font-family="-apple-system, sans-serif" font-size="13" fill="rgba(255,255,255,0.45)">проектов</text>
+  <text x="940" y="440" font-family="-apple-system, sans-serif" font-size="36" font-weight="700" fill="#ffffff" letter-spacing="-1">7 дн.</text>
+  <text x="940" y="466" font-family="-apple-system, sans-serif" font-size="13" fill="rgba(255,255,255,0.45)">средний срок</text>
+  <text x="1080" y="440" font-family="-apple-system, sans-serif" font-size="36" font-weight="700" fill="#ffffff" letter-spacing="-1">24/7</text>
+  <text x="1080" y="466" font-family="-apple-system, sans-serif" font-size="13" fill="rgba(255,255,255,0.45)">поддержка</text>
+</svg>
