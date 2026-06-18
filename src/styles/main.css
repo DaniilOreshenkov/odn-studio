@@ -1749,3 +1749,52 @@ section.block{padding:90px 0;position:relative;z-index:2;contain:layout}
   .ai-cards{grid-template-columns:1fr}
 }
 
+/* ── Mobile polish (≤480px) ───────────────────────── */
+@media(max-width:480px){
+
+  /* общие секции */
+  section.block{padding:56px 0}
+  .sec-head{margin-bottom:32px}
+  .sec-head p{font-size:16px;line-height:1.6}
+  .sec-head h2{font-size:clamp(26px,7.5vw,36px)}
+
+  /* hero */
+  .hero{padding:90px 0 32px}
+  .hero p.sub{font-size:16px}
+  .term-stage{margin-top:40px}
+
+  /* статистика */
+  .stats{grid-template-columns:repeat(2,1fr);gap:18px}
+  .stat .num{font-size:clamp(34px,9vw,44px)}
+  .stat .lbl{font-size:13px}
+
+  /* advantages */
+  .adv-grid{gap:12px}
+  .adv-card,.adv-main{padding:22px;border-radius:20px}
+
+  /* process */
+  .pint-step{padding:7px 12px}
+  .pint-step-title{font-size:12px}
+  .pint-panel{padding:22px;border-radius:22px}
+
+  /* services */
+  .service-card,.service-main{padding:22px;border-radius:20px}
+
+  /* AI section */
+  .ai-new{padding:56px 0 52px}
+  .ai-head{margin-bottom:28px}
+  .ai-title{font-size:clamp(26px,7.5vw,36px)}
+  .ai-sub{font-size:15px;line-height:1.6}
+
+  /* contact */
+  .cn-section{padding:52px 0 56px}
+  .cn-title{font-size:clamp(42px,11vw,60px);margin:0 0 24px}
+  .cn-left,.cn-right{padding:24px 20px}
+  .cn-chips{gap:6px}
+  .cn-chip{padding:6px 13px;font-size:13px}
+  .cn-tg-btn{padding:15px 18px;font-size:14px}
+  .cn-email-btn{padding:13px 18px;font-size:13px}
+
+  /* footer */
+  .footer-grid{gap:24px}
+}
